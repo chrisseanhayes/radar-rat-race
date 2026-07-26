@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Radar Rat Race Web - A premium modernized clone of the classic VIC-20 maze-chase game." />
+    <title>Radar Rat Race</title>
+    <!-- Modern font for UI elements -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <header class="game-header">
+        <h1>RADAR RAT RACE</h1>
+        <div class="stats">
+          <div class="stat-box">SCORE <span id="score">0</span></div>
+          <div class="stat-box">TIME <span id="time">99</span></div>
+          <div class="stat-box">STARS <span id="stars">3</span></div>
+        </div>
+      </header>
+      
+      <main class="game-container">
+        <!-- Main Game Canvas -->
+        <div class="canvas-wrapper">
+          <canvas id="gameCanvas" width="800" height="600"></canvas>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="radar-container">
+            <h2>RADAR</h2>
+            <canvas id="radarCanvas" width="200" height="200"></canvas>
+          </div>
+          <div class="controls-hint">
+            <p><strong>ARROWS / WASD:</strong> Move</p>
+            <p><strong>SPACE:</strong> Star Screen</p>
+            <p><strong>R:</strong> Restart Game</p>
+            <hr style="border:none; border-top: 1px solid #1A1A2E; margin: 0.5rem 0;">
+            <button id="audioToggle" class="audio-btn">🔊 SOUND ON</button>
+          </div>
+        </div>
+
+        <!-- Debug Sidebar -->
+        <div class="debug-sidebar collapsed" id="debugSidebar">
+          <button id="debugToggle" class="debug-toggle">DEBUG <span>▶</span></button>
+          <div class="debug-content">
+            <h3>DEBUG INFO</h3>
+            <div class="debug-control">
+              <label for="dbg-base-speed">Base Speed:</label>
+              <input type="number" id="dbg-base-speed" value="120" min="0" max="400" step="10">
+            </div>
+            <div class="debug-control">
+              <label for="dbg-freeze"><input type="checkbox" id="dbg-freeze"> Freeze Rats</label>
+            </div>
+            <div class="debug-control" style="margin-top: 1rem;">
+              <button id="openMusicEditor" class="audio-btn" style="border-color: var(--neon-pink); color: var(--neon-pink);">🎵 EDIT MUSIC</button>
+            </div>
+            <hr>
+            <div class="debug-stat">Rat Speed: <span id="dbg-rat-speed">0</span></div>
+            <div class="debug-stat">Player Speed: <span id="dbg-player-speed">400</span></div>
+            <div class="debug-stat">Uncollected: <span id="dbg-uncollected">0</span></div>
+            <div class="debug-stat">State: <span id="dbg-state">START</span></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Music Editor Modal -->
+    <div id="musicModal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>MUSIC EDITOR (16th Notes)</h2>
+          <div style="display: flex; align-items: center;">
+            <button id="navLeftBtn" class="audio-btn" style="width: auto; margin-right: 0.5rem;">&lt; BAR</button>
+            <button id="navRightBtn" class="audio-btn" style="width: auto; margin-right: 1.5rem;">BAR &gt;</button>
+            <button id="playEditorBtn" class="audio-btn" style="margin-right: 1rem; width: 100px;">▶ PLAY</button>
+            <button id="closeMusicEditor" class="close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center; font-size: 0.7rem;">
+            <span style="color: #aaa;">COPY BAR:</span>
+            <select id="copyBarSelect" class="audio-btn" style="width: auto; padding: 2px;">
+            </select>
+            <button id="copyBarBtn" class="audio-btn" style="width: auto; padding: 2px 8px;">COPY</button>
+            <span style="color: #aaa; margin: 0 10px;">&rarr;</span>
+            <span style="color: #aaa;">PASTE TO:</span>
+            <select id="pasteBarSelect" class="audio-btn" style="width: auto; padding: 2px;">
+            </select>
+            <button id="pasteBarBtn" class="audio-btn" style="width: auto; padding: 2px 8px;">PASTE</button>
+            <div style="flex-grow: 1;"></div>
+            <button id="addBarBtn" class="audio-btn" style="width: auto; padding: 2px 8px; border-color: var(--neon-yellow); color: var(--neon-yellow);">+ ADD BAR</button>
+          </div>
+          <div class="piano-roll-container">
+            <div id="pianoRoll" class="piano-roll">
+              <!-- JS will populate grid -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label style="color: #aaa; font-size: 0.7rem;">TEMPO:</label>
+            <input type="range" id="tempoSlider" min="80" max="300" value="166" style="width: 100px;">
+            <span id="tempoDisplay" style="color: var(--neon-pink); font-size: 0.7rem; width: 60px;">166 BPM</span>
+          </div>
+          <div style="display: flex;">
+            <button id="resetMusicBtn" class="audio-btn" style="width: auto; margin-right: 1rem;">RESET DEFAULT</button>
+            <button id="saveMusicBtn" class="audio-btn" style="width: auto; border-color: var(--neon-pink); color: var(--neon-pink);">SAVE TRACK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
