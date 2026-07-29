@@ -1,0 +1,30 @@
+{
+  "tempoBPM": 150,
+  "instrument": "piano",
+  "musicData": [
+    "G4",
+    null,
+    null,
+    null,
+    "C5",
+    null,
+    null,
+    null,
+    "E5",
+    "~E5",
+    "~E5",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ]
+}

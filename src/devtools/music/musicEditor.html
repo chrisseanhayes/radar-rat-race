@@ -1,0 +1,65 @@
+<!-- Music Editor Modal -->
+<div id="musicModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>MUSIC EDITOR (16th Notes)</h2>
+      <div style="display: flex; align-items: center;">
+        <label style="color: #aaa; font-size: 0.7rem; margin-right: 10px;">TRACK:</label>
+        <select id="trackSelect" class="audio-btn" style="width: auto; padding: 2px; margin-right: 1rem;">
+          <option value="bgm">Main Music (bgm)</option>
+          <option value="sfx_die">Crash / Die</option>
+          <option value="sfx_turn">Turn Move</option>
+          <option value="sfx_walk">Walk</option>
+          <option value="sfx_eat">Eat Cheese</option>
+          <option value="sfx_star">Drop Star</option>
+          <option value="sfx_gameover">Game Over</option>
+          <option value="sfx_victory">Victory</option>
+        </select>
+        <button id="navLeftBtn" class="audio-btn" style="width: auto; margin-right: 0.5rem;">&lt; BAR</button>
+        <button id="navRightBtn" class="audio-btn" style="width: auto; margin-right: 1.5rem;">BAR &gt;</button>
+        <button id="playEditorBtn" class="audio-btn" style="margin-right: 1rem; width: 100px;">▶ PLAY</button>
+        <button id="closeMusicEditor" class="close-btn">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center; font-size: 0.7rem;">
+        <span style="color: #aaa;">COPY BAR:</span>
+        <select id="copyBarSelect" class="audio-btn" style="width: auto; padding: 2px;">
+        </select>
+        <button id="copyBarBtn" class="audio-btn" style="width: auto; padding: 2px 8px;">COPY</button>
+        <span style="color: #aaa; margin: 0 10px;">&rarr;</span>
+        <span style="color: #aaa;">PASTE TO:</span>
+        <select id="pasteBarSelect" class="audio-btn" style="width: auto; padding: 2px;">
+        </select>
+        <button id="pasteBarBtn" class="audio-btn" style="width: auto; padding: 2px 8px;">PASTE</button>
+        <div style="flex-grow: 1;"></div>
+        <button id="addBarBtn" class="audio-btn" style="width: auto; padding: 2px 8px; border-color: var(--neon-yellow); color: var(--neon-yellow);">+ ADD BAR</button>
+      </div>
+      <div class="piano-roll-container">
+        <div id="pianoRoll" class="piano-roll">
+          <!-- JS will populate grid -->
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label style="color: #aaa; font-size: 0.7rem;">TEMPO:</label>
+        <input type="range" id="tempoSlider" min="80" max="300" value="166" style="width: 100px;">
+        <span id="tempoDisplay" style="color: var(--neon-pink); font-size: 0.7rem; width: 60px;">166 BPM</span>
+        
+        <label style="color: #aaa; font-size: 0.7rem; margin-left: 10px;">INSTRUMENT:</label>
+        <select id="instrumentSelect" class="audio-btn" style="width: auto; padding: 2px;">
+          <option value="piano">Piano</option>
+          <option value="retro">Retro 80s</option>
+          <option value="trombone">Trombone</option>
+          <option value="snare">Snare Drum</option>
+          <option value="kick">Bass Drum</option>
+        </select>
+      </div>
+      <div style="display: flex;">
+        <button id="resetMusicBtn" class="audio-btn" style="width: auto; margin-right: 1rem;">RESET DEFAULT</button>
+        <button id="saveMusicBtn" class="audio-btn" style="width: auto; border-color: var(--neon-pink); color: var(--neon-pink);">SAVE TRACK</button>
+      </div>
+    </div>
+  </div>
+</div>

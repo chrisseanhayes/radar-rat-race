@@ -1,0 +1,58 @@
+.map-editor-modal {
+  width: 900px;
+  max-width: 95vw;
+}
+
+.map-grid-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  background: #999999;
+  padding: 1rem;
+  border-radius: 0;
+  border: 1px solid #d1d1e0;
+}
+
+.map-grid {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.map-row {
+  display: flex;
+}
+
+.map-cell {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border: 1px solid #d1d1e0;
+  box-sizing: border-box;
+  cursor: crosshair;
+}
+
+.map-cell.wall {
+  background-color: #a3b19b;
+  border-color: #8a9981;
+}
+
+.map-cell.empty {
+  background-color: #999999;
+}
+
+.map-cell.player {
+  background-color: #0055ff;
+  border-radius: 0;
+}
+
+.map-cell.enemy {
+  background-color: #e6005c;
+  border-radius: 0;
+}
+
+.map-cell.locked {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

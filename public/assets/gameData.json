@@ -1,0 +1,16 @@
+{
+  "events": {
+    "bgm": "bgm",
+    "die": "sfx_die",
+    "turn": "sfx_turn",
+    "walk": "sfx_walk",
+    "gameover": "sfx_gameover",
+    "eat": "sfx_eat",
+    "star": "sfx_star",
+    "victory": "sfx_victory",
+    "trap": "sfx_trap"
+  },
+  "levels": [
+    "map.json"
+  ]
+}
